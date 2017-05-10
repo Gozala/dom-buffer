@@ -1,0 +1,1 @@
+flatc --ts --no-fb-import -o src src/DOMBuffer.fbs && mv src/DOMBuffer_generated.ts src/DOMBuffer.fbs.ts

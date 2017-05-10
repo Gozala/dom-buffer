@@ -3,3 +3,5 @@
 !dist
 !lib
 examples
+!*.js
+!*.d.ts

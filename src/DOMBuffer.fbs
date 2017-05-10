@@ -1,0 +1,72 @@
+namespace DOMBuffer;
+
+union ChangeNode {
+  ChangeText,
+  ChangeComment,
+  ChangeElement
+}
+
+enum ChangeType:byte {
+  Remove,
+  Insert,
+  Edit,
+  Replace
+}
+
+table Change {
+  type:ChangeType;
+  change:ChangeNode;
+}
+
+table ChangeChild {
+  index:short;
+  change:Change;
+}
+
+
+enum PropertyType:byte {
+  Undefined,
+  Null,
+  Boolean,
+  Number,
+  String,
+  JSON
+}
+
+table ChangeProperty {
+  type:PropertyType;
+  name:string;
+  value:string;
+}
+
+table ChangeAttribute {
+  name:string;
+  namespaceURI:string;
+  value:string;
+}
+
+table ChangeStyle {
+  name:string;
+  value:string;
+}
+
+
+table ChangeText {
+  text:string;
+}
+
+table ChangeComment {
+  text:string;
+}
+
+table ChangeElement {
+  namespaceURI:string;
+  localName:string;
+  propreties:[ChangeProperty];
+  attributes:[ChangeAttribute];
+  style:[ChangeStyle];
+  children:[ChangeChild];
+}
+
+
+root_type Change;
